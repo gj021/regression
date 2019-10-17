@@ -26,16 +26,16 @@ class gradient_descent:
 
     #matrix operation and updating w
     def w_approximation(self):
-        g0 = sumw0(self)
-        g1 = sumw1()
-        g2 = sumw2()
-        if(abs(g0*learning_rate) < stoping_constant):# & g1*self.learning_rate < self.stoping_constant & g2*self.learning_rate < self.stoping_constant):
+        g0 = self.sumw0()
+        g1 = self.sumw1()
+        g2 = self.sumw2()
+        if(abs(g0*self.learning_rate) < self.stoping_constant):# & g1*self.learning_rate < self.stoping_constant & g2*self.learning_rate < self.stoping_constant):
             return
-        w0 = w0 - g0*learning_rate
-        w1 = w1 - g1*learning_rate
-        w2 = w2 - g2*learning_rate
-        print(g0)
-        w_approximation()
+        self.w0 = self.w0 - g0*self.learning_rate
+        self.w1 = self.w1 - g1*self.learning_rate
+        self.w2 = self.w2 - g2*self.learning_rate
+        print(self.w0)
+        self.w_approximation()
 
 reg = gradient_descent(data)
 reg.w_approximation()
