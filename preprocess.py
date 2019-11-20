@@ -1,5 +1,6 @@
 import numpy as np
 import pickle
+from sklearn import preprocessing
 
 data_set=open("data.txt",'r')
 
@@ -10,9 +11,13 @@ for line in data_set:
     data_line=line.split(',')
     data_line=[float(i) for i in data_line]
     data.append(data_line[1:4])
-    
-data=np.array(data)
-print(data.shape)
+
+data = np.array(data)
+
+data = (data - np.min(data,axis = 0))/np.ptp(data,axis=0)
+
+print(data)
 
 f=open("data.pkl",'wb')
 pickle.dump(data,f)
+f.close()
